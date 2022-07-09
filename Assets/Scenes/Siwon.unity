@@ -6217,7 +6217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 370, y: 270}
+  m_AnchoredPosition: {x: 356, y: 270}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &846809122
@@ -6296,7 +6296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 370, y: 270}
+  m_AnchoredPosition: {x: 356, y: 270}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &875490636
@@ -6890,7 +6890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 370, y: 270}
+  m_AnchoredPosition: {x: 356, y: 270}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962366567
@@ -7504,7 +7504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 370, y: 275}
+  m_AnchoredPosition: {x: 356, y: 275}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1049810012
@@ -7741,7 +7741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 365, y: 270}
+  m_AnchoredPosition: {x: 351, y: 270}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1066584911
@@ -7820,7 +7820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 370, y: 270}
+  m_AnchoredPosition: {x: 356, y: 270}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1089187028
@@ -8676,7 +8676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 370, y: 270}
+  m_AnchoredPosition: {x: 356, y: 270}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1173086820
@@ -16046,10 +16046,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c63d3ab82fd7e145b908377b2715cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upGradeBtn: []
-  upGradeBtnTxt: []
-  skilltxt: []
-  skillLeveltxt: []
+  upGradeBtn:
+  - {fileID: 1447849141}
+  - {fileID: 448582467}
+  - {fileID: 96900327}
+  - {fileID: 274812925}
+  - {fileID: 13476239}
+  - {fileID: 288864801}
+  - {fileID: 1584646827}
+  upGradeBtnTxt:
+  - {fileID: 1744208578}
+  - {fileID: 1580800627}
+  - {fileID: 1959160343}
+  - {fileID: 1867629718}
+  - {fileID: 1062100176}
+  - {fileID: 1448045199}
+  - {fileID: 540804982}
+  skilltxt:
+  - {fileID: 1609619630}
+  - {fileID: 904861972}
+  - {fileID: 456896705}
+  - {fileID: 1215189856}
+  - {fileID: 1061341434}
+  - {fileID: 1648869314}
+  - {fileID: 1000980054}
+  skillLeveltxt:
+  - {fileID: 1066584911}
+  - {fileID: 1049810012}
+  - {fileID: 1173086820}
+  - {fileID: 962366567}
+  - {fileID: 1089187028}
+  - {fileID: 846809122}
+  - {fileID: 875490636}
   levelupbar: []
 --- !u!1 &2069201183
 GameObject:

@@ -31,37 +31,17 @@ public class SkillUpGrade : MonoBehaviour
 
     private Canvas canvas;
 
-    private void Awake()
+    private void Start()
     {
-        skillName.Add(0, "일반 공격");
-        skillName.Add(1, "광역 공격");
-        skillName.Add(2, "방어,회복");
-        skillName.Add(3, "유닛 소환");
-        skillName.Add(4, "검기 발사");
-        skillName.Add(5, "빙결");
-        skillName.Add(6, "참참참");
+        
     }
     private void OnEnable()
     {
-        canvas = FindObjectOfType<Canvas>();
-        for (int i = 0; i < upGradeBtn.Count; i++)
+        if(GameManager.Instance == null)
         {
-            SetSkillBtn(i);
+            StartCoroutine(wait());
         }
-        for (int i = 0; i < upGradeBtn.Count; i++)
-        {
-            upGradeBtn[i].onClick.AddListener(() =>
-            {
-                int num;
-                Debug.Log($"{skillName[i]} 스킬이 업그래이드 되었습니다");
-                num = i;
-                SetSkillBtn(num);
-            });
-        }
-        for (int i = 0; i < skilltxt.Count; i++)
-        {
-            skilltxt[i].text = skillName[i];
-        }
+        
     }
     /// <summary>
     /// 업그래이드를 하는데 정수형으로 어떤 버튼인지 
@@ -71,5 +51,42 @@ public class SkillUpGrade : MonoBehaviour
     {
         levelupbar[type].UpGrade((ESkillType)type);
     }
-   
+    private IEnumerator wait()
+    {
+        yield return new WaitForSeconds(0.05f);
+        skillName.Add(0, "일반 공격");
+        skillName.Add(1, "광역 공격");
+        skillName.Add(2, "방어,회복");
+        skillName.Add(3, "유닛 소환");
+        skillName.Add(4, "검기 발사");
+        skillName.Add(5, "빙결");
+        skillName.Add(6, "참참참");
+        canvas = FindObjectOfType<Canvas>();
+        for (int i = 0; i < upGradeBtn.Count; i++)
+        {
+            SetSkillBtn(i);
+        }
+        for (int i = 0; i < skillName.Count; i++)
+        {
+            upGradeBtn[i].onClick.AddListener(() =>
+            {
+                int num;
+                num = i;
+                SetSkillBtn(num);
+                Debug.Log($"{skillName[num]} 스킬이 업그래이드 되었습니다");
+            });
+        }
+        for (int i = 0; i < skilltxt.Count; i++)
+        {
+            skilltxt[i].text = skillName[i];
+        }
+
+        skillLeveltxt[0].text = GameManager.Instance.SkillLevelStat.DamageLevel + " Level".ToString();
+        skillLeveltxt[1].text = GameManager.Instance.SkillLevelStat.CloseWideRangeLevel + " Level".ToString();
+        skillLeveltxt[2].text = GameManager.Instance.SkillLevelStat.HealLevel + " Level".ToString();
+        skillLeveltxt[3].text = GameManager.Instance.SkillLevelStat.SpawnCreatureLevel + " Level".ToString();
+        skillLeveltxt[4].text = GameManager.Instance.SkillLevelStat.AllLineAttackLevel + " Level".ToString();
+        skillLeveltxt[5].text = GameManager.Instance.SkillLevelStat.CCSkillLevel + " Level".ToString();
+        skillLeveltxt[6].text = GameManager.Instance.SkillLevelStat.AllMapAttackLevel + " Level".ToString();
+    }
 }

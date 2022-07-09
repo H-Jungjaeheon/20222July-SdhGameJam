@@ -59,7 +59,7 @@ public class Levelupbar : MonoBehaviour
                 Levelbar(GameManager.Instance.SkillLevelStat.AllMapAttackLevel);
                 break;
         }
-        Debug.Log(GameManager.Instance.SkillLevelStat.DamageLevel);
+        Debug.Log((int)skillType);
     }
     public void Levelbar(int level)
     {
