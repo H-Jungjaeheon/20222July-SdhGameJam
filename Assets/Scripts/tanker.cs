@@ -7,7 +7,7 @@ public class tanker : MonoBehaviour
     [SerializeField] private float baseHealth;
     [SerializeField] private float moveSpeed;
 
-    private float curHealth;
+    [SerializeField] private float curHealth;
     private float knockbackStart;
 
     private bool isFreeze;
