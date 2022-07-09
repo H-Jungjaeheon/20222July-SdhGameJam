@@ -16,7 +16,7 @@ public class arrow : MonoBehaviour
 
         transform.position = curPos + nextPos;
     }
-
+        
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EndLine"))
