@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float MaxMoveCoolTimeCount;
     [SerializeField] private List<GameObject> RangeInEnemy = new List<GameObject>();
     [SerializeField] private float MaxAttackCoolTime, AttackCoolTime;
-    public bool Test;
+    [SerializeField] private float BasicAttackDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
             {
                 if (RangeInEnemy[NowEnemyListIndex] != null)
                 {
-                    RangeInEnemy[NowEnemyListIndex].GetComponent<Player>().Test = true;
+                    RangeInEnemy[NowEnemyListIndex].GetComponent<tanker>().Damage(BasicAttackDamage);
                 }
             }
             AttackCoolTime = 0;
