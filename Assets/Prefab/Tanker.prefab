@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4596295139647682747}
   m_Layer: 7
   m_Name: Tanker
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealth: 100
   moveSpeed: 1
+  curHealth: 0
 --- !u!50 &4596295139647682747
 Rigidbody2D:
   serializedVersion: 4

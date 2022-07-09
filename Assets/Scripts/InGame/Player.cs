@@ -82,8 +82,9 @@ public class Player : MonoBehaviour
                     }
                 }
                 break;
-            case 2:
+            case 2: //힐
                 print("2번 스킬 사용");
+                InGameManager.Instance.Heal(InGameManager.Instance.Hp);
                 break;
             case 3:
                 print("3번 스킬 사용");

@@ -101,9 +101,10 @@ public class tanker : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
+    { 
         if (collision.gameObject.CompareTag("EndLine"))
         {
+            InGameManager.Instance.EnemyPass(InGameManager.Instance.Hp);
             Destroy(gameObject);
         }
     }

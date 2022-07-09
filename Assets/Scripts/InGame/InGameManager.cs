@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InGameManager : MonoBehaviour
 {
@@ -32,6 +33,10 @@ public class InGameManager : MonoBehaviour
     [SerializeField] private float MaxStageTime;
     [SerializeField] private float StageTime;
 
+    [Header("스테이지 변수")]
+    [SerializeField] private GameObject[] HpImage = new GameObject[3];
+
+
     [Header("재화")]
     public int GetGold;
 
@@ -59,6 +64,30 @@ public class InGameManager : MonoBehaviour
         DiceRoll();
         StageTimer();
     }
+
+    public void EnemyPass(int CurHp)
+    {
+        switch (CurHp)
+        {
+            case 3: HpImage[CurHp - 1].SetActive(false); break;
+            case 2: HpImage[CurHp - 1].SetActive(false); break;
+            case 1: HpImage[CurHp - 1].SetActive(false); break;
+        }
+        if(Hp > 0)
+           Hp -= 1;
+    }
+
+    public void Heal(int CurHp)
+    {
+        switch (CurHp)
+        {
+            case 1: HpImage[CurHp].SetActive(true); break;
+            case 2: HpImage[CurHp].SetActive(true); break;
+        }
+        if (Hp < 3)
+            Hp += 1;
+    }
+
     private void StartSetting()
     {
         Instance = this;
@@ -98,9 +127,9 @@ public class InGameManager : MonoBehaviour
         var PlayerComponent = player.GetComponent<Player>();
         RandDiceIndex = Random.Range(1, 101);
         //주사위 애니메이션 실행
-        yield return new WaitForSeconds(3);
+        //yield return new WaitForSeconds(3);
         //주사위 애니메이션 멈춤
-        yield return new WaitForSeconds(1); 
+        yield return new WaitForSeconds(0); //1 
         for(int SkillIndex = 0; SkillIndex < 6; SkillIndex++)
         {
             if(RandDiceIndex > SkillPercentage[SkillIndex])
