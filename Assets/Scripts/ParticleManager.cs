@@ -20,6 +20,8 @@ public class ParticleManager : MonoBehaviour
 
     public void playDeathEffect(Vector3 pos)
     {
+        Debug.Log("asdf");
+
         ParticleSystem effect = Instantiate(enemyDeathEffect);
 
         effect.transform.position = pos;
