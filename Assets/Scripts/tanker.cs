@@ -12,6 +12,9 @@ public class tanker : MonoBehaviour
 
     private bool isFreeze;
     private bool knockback;
+    private bool skillknockback;
+
+    Rigidbody2D rigid;
 
     private void OnEnable()
     {
@@ -21,6 +24,7 @@ public class tanker : MonoBehaviour
     private void Awake()
     {
         curHealth = baseHealth;
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -77,6 +81,37 @@ public class tanker : MonoBehaviour
         {
             knockback = false;
         }
+        if (Time.time >= knockbackStart + 0.5f && skillknockback)
+        {
+            knockback = false;
+            rigid.velocity = new Vector2(0.0f, rigid.velocity.y);
+        }
+    }
+
+    public void skillDamage(float damage)
+    {
+        curHealth -= damage;
+
+        //맞으면 넉백
+        if (curHealth > 0)
+        {
+            skillKnockback();
+        }
+
+        if (curHealth <= 0)  //체력이 0이하이면 사망
+        {
+            ParticleManager.Instance.playDeathEffect(transform.position);
+            Destroy(gameObject);
+        }
+
+        ParticleManager.Instance.playHitEffect(transform.position);
+    }
+
+    private void skillKnockback()
+    {
+        skillknockback = true;
+        knockbackStart = Time.time;
+        rigid.velocity = new Vector2(10 * Vector2.right.x,rigid.velocity.y);
     }
 
     public void freeze(float sec)
