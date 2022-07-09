@@ -8,6 +8,7 @@ public class ParticleManager : MonoBehaviour
 
     [SerializeField] private ParticleSystem enemyDeathEffect;
     [SerializeField] private ParticleSystem enemyFreezeEffect;
+    [SerializeField] private ParticleSystem enemyHitEffect;
 
     private void Awake()
     {
@@ -29,6 +30,15 @@ public class ParticleManager : MonoBehaviour
     public void playFreezeEffect(Vector3 pos)
     {
         ParticleSystem effect = Instantiate(enemyFreezeEffect);
+
+        effect.transform.position = pos;
+
+        effect.Play();
+    }
+
+    public void playHitEffect(Vector3 pos)
+    {
+        ParticleSystem effect = Instantiate(enemyHitEffect);
 
         effect.transform.position = pos;
 

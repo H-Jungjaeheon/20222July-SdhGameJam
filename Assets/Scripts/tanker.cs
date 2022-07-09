@@ -55,6 +55,8 @@ public class tanker : MonoBehaviour
             ParticleManager.Instance.playDeathEffect(transform.position);
             Destroy(gameObject);
         }
+
+        ParticleManager.Instance.playHitEffect(transform.position);
     }
 
     private void Knockback()
