@@ -10,13 +10,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float MaxMoveCoolTimeCount;
     [SerializeField] private List<GameObject> RangeInEnemy = new List<GameObject>();
     [SerializeField] private float MaxAttackCoolTime, AttackCoolTime;
-    public bool Test;
-
+    [SerializeField] private float BasicAttackDamage;
+    [SerializeField] private GameObject MainCam;
+    private GameObject SkillRangeObj;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    void Start() => StartSetting();
 
     // Update is called once per frame
     void Update()
@@ -25,6 +23,12 @@ public class Player : MonoBehaviour
         EnemyListCorrection();
         Attack();
     }
+
+    private void StartSetting()
+    {
+        SkillRangeObj = transform.GetChild(0).gameObject;
+    }
+
     private void MoveUpDown()
     {
         MoveCoolTimeCount += Time.deltaTime;
@@ -43,17 +47,19 @@ public class Player : MonoBehaviour
         if (MoveCoolTimeCount >= MaxMoveCoolTimeCount)
             MoveCoolTimeCount = MaxMoveCoolTimeCount;
     }
-    private void Attack()
+    public void Attack()
     {
         if(AttackCoolTime < MaxAttackCoolTime)
            AttackCoolTime += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Z) && AttackCoolTime >= MaxAttackCoolTime)
         {
+            var Cam = MainCam.GetComponent<CamShake>();
             for (int NowEnemyListIndex = 0; NowEnemyListIndex < RangeInEnemy.Count; NowEnemyListIndex++)
             {
                 if (RangeInEnemy[NowEnemyListIndex] != null)
                 {
-                    RangeInEnemy[NowEnemyListIndex].GetComponent<Player>().Test = true;
+                    Cam.VibrateForTime(0.2f, 0.3f);
+                    RangeInEnemy[NowEnemyListIndex].GetComponent<tanker>().Damage(BasicAttackDamage);
                 }
             }
             AttackCoolTime = 0;
@@ -63,11 +69,22 @@ public class Player : MonoBehaviour
     {
         switch (SkillIndex)
         {
-            case 1:
+            case 1: //기본공격 강화 스킬 (찌르기)
                 print("1번 스킬 사용");
+                var Cam = MainCam.GetComponent<CamShake>();
+                var FirstSkill = SkillRangeObj.GetComponent<PlayerFirstSkillRange>();
+                for (int NowEnemyListIndex = 0; NowEnemyListIndex < FirstSkill.FirstSkillRangeInEnemy.Count; NowEnemyListIndex++)
+                {
+                    if (FirstSkill.FirstSkillRangeInEnemy[NowEnemyListIndex] != null)
+                    {
+                        Cam.VibrateForTime(0.2f, 0.5f);
+                        FirstSkill.FirstSkillRangeInEnemy[NowEnemyListIndex].GetComponent<tanker>().Damage(BasicAttackDamage * 2);
+                    }
+                }
                 break;
-            case 2:
+            case 2: //힐
                 print("2번 스킬 사용");
+                InGameManager.Instance.Heal(InGameManager.Instance.Hp);
                 break;
             case 3:
                 print("3번 스킬 사용");
@@ -82,6 +99,7 @@ public class Player : MonoBehaviour
                 print("6번 스킬 사용");
                 break;
         }
+        InGameManager.Instance.IsDiceRolling = false;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
