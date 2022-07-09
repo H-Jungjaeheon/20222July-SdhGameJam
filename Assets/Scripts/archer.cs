@@ -15,11 +15,12 @@ public class archer : MonoBehaviour
     [SerializeField] private LayerMask creatureLayer;
 
     private float curHealth;
+    private float knockbackStart;
 
     private bool isTargeting;
+    private bool isFreeze;
     private bool canMove = true;
-
-    Rigidbody2D rigid;
+    private bool knockback;
 
     private void OnEnable()
     {
@@ -28,11 +29,12 @@ public class archer : MonoBehaviour
 
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
+        curHealth = baseHealth;
     }
 
     private void Update()
     {
+        CheckKnockback();
         CheckTargeting();
         Move();
         Attack();
@@ -40,7 +42,7 @@ public class archer : MonoBehaviour
 
     private void Move()
     {
-        if (!canMove)
+        if (!canMove || isFreeze || knockback)
             return;
 
         Vector2 curPos = transform.position;
@@ -70,9 +72,58 @@ public class archer : MonoBehaviour
     {
         curHealth -= damage;
 
+        //맞으면 넉백
+        if (curHealth > 0)
+        {
+            Knockback();
+        }
+
         if (curHealth <= 0)  //체력이 0이하이면 사망
         {
+            ParticleManager.Instance.playDeathEffect(transform.position);
             Destroy(gameObject);
+        }
+    }
+
+    public void freeze(float sec)
+    {
+        if(isFreeze)
+        {
+            return;
+        }
+
+        isFreeze = true;
+
+        ParticleManager.Instance.playFreezeEffect(transform.position);
+
+        StartCoroutine(freezeOff(sec));
+    }
+
+    IEnumerator freezeOff(float sec)
+    {
+        yield return new WaitForSecondsRealtime(sec);
+
+
+        isFreeze = false;
+    }
+
+    private void Knockback()
+    {
+        knockback = true;
+        knockbackStart = Time.time;
+
+        Vector2 curPos = transform.position;
+        Vector2 nextPos = Vector2.right * 0.3f;
+
+        transform.position = curPos + nextPos;
+    }
+
+    private void CheckKnockback()
+    {
+        //0.1초 후에 넉백 해제
+        if (Time.time >= knockbackStart + 0.1f && knockback)
+        {
+            knockback = false;
         }
     }
 
