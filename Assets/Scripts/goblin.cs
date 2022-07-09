@@ -47,7 +47,7 @@ public class goblin : MonoBehaviour
         curHealth -= damage;
 
         //¸ÂÀ¸¸é ³Ë¹é
-        if(curHealth > 0)
+        if (curHealth > 0)
         {
             Knockback();
         }
@@ -57,6 +57,8 @@ public class goblin : MonoBehaviour
             ParticleManager.Instance.playDeathEffect(transform.position);
             Destroy(gameObject);
         }
+
+        ParticleManager.Instance.playHitEffect(transform.position);
     }
 
     private void Knockback()

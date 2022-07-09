@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDeathEffect: {fileID: 478378672411620606, guid: 56de14d044c752b47aeb1f4bfe4ecb71, type: 3}
   enemyFreezeEffect: {fileID: 7626673987765147078, guid: 00703a04e65963348a72836a3f7cac16, type: 3}
+  enemyHitEffect: {fileID: 7507200100685231807, guid: 14bb1f3826a998244a95758ce707ef8e, type: 3}
 --- !u!4 &738755081
 Transform:
   m_ObjectHideFlags: 0
@@ -809,11 +810,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8986113052296255025, guid: 43e89f7b98711354ab99431e355a3018, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.89
+      value: 4.28
       objectReference: {fileID: 0}
     - target: {fileID: 8986113052296255025, guid: 43e89f7b98711354ab99431e355a3018, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.29
+      value: -2.02
       objectReference: {fileID: 0}
     - target: {fileID: 8986113052296255025, guid: 43e89f7b98711354ab99431e355a3018, type: 3}
       propertyPath: m_LocalPosition.z

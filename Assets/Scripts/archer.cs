@@ -83,6 +83,8 @@ public class archer : MonoBehaviour
             ParticleManager.Instance.playDeathEffect(transform.position);
             Destroy(gameObject);
         }
+
+        ParticleManager.Instance.playHitEffect(transform.position);
     }
 
     public void freeze(float sec)
