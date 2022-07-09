@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goblin : MonoBehaviour
+public class goblin : MonoBehaviour
 {
     [SerializeField] private float baseHealth;
     [SerializeField] private float moveSpeed;
