@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InGameManager : MonoBehaviour
 {
+    public static InGameManager Instance { get; set; }
     [Header("스킬 확률 변수 모음")]
     [Tooltip("눈금 1 ~ 6까지의 스킬 확률")]
     private Dictionary<int, int> SkillPercentage = new Dictionary<int, int>();
@@ -37,6 +38,11 @@ public class InGameManager : MonoBehaviour
     [Header("스탯")]
     public int Hp;
 
+    [HideInInspector]
+    public bool IsDiceRolling;
+
+
+
     private void Awake() => StartSetting();
 
 
@@ -55,7 +61,8 @@ public class InGameManager : MonoBehaviour
     }
     private void StartSetting()
     {
-        for(int NowSkillIndex = 0; NowSkillIndex < 6; NowSkillIndex++)
+        Instance = this;
+        for (int NowSkillIndex = 0; NowSkillIndex < 6; NowSkillIndex++)
         {
             SkillPercentage.Add(NowSkillIndex, SkillPercentages[NowSkillIndex]);
         }
@@ -79,8 +86,9 @@ public class InGameManager : MonoBehaviour
     }
     private void DiceRoll()
     {
-        if (Input.GetKeyDown(KeyCode.X) && DiceStackCount >= 1)
+        if (Input.GetKeyDown(KeyCode.X) && DiceStackCount >= 1 && !IsDiceRolling)
         {
+            IsDiceRolling = true;
             DiceStackCount -= 1;
             StartCoroutine(RollTheDice());
         }
@@ -92,11 +100,14 @@ public class InGameManager : MonoBehaviour
         //주사위 애니메이션 실행
         yield return new WaitForSeconds(3);
         //주사위 애니메이션 멈춤
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1); 
         for(int SkillIndex = 0; SkillIndex < 6; SkillIndex++)
         {
             if(RandDiceIndex > SkillPercentage[SkillIndex])
-               PlayerComponent.RandSkill(SkillIndex + 1);
+            {
+                PlayerComponent.RandSkill(SkillIndex + 1);
+                break;
+            }
         }
     }
  

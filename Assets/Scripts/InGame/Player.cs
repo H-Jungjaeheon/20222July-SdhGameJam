@@ -82,6 +82,7 @@ public class Player : MonoBehaviour
                 print("6번 스킬 사용");
                 break;
         }
+        InGameManager.Instance.IsDiceRolling = false;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
