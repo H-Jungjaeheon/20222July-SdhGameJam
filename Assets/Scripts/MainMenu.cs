@@ -12,9 +12,12 @@ public class MainMenu : MonoBehaviour
     private Button gameStartbtn;
 
     [SerializeField]
-    [Tooltip("파워업 창")]
-    [Header("파워업 창")]
+    [Tooltip("파워업 창띄우는 버튼")]
+    [Header("파워업")]
     private Button powerUpBtn;
+    [SerializeField]
+    [Tooltip("파워업 창")]
+    private GameObject powerUpBoard;
 
     [SerializeField]
     [Tooltip("뒤로가기")]
@@ -22,8 +25,22 @@ public class MainMenu : MonoBehaviour
     private Button backBtn;
 
     [SerializeField]
-    private GameObject powerUpBoard;
-
+    [Header("Money")]
+    private Text moneyText;
+    
+    private int money;
+    public int Money
+    {
+        get
+        {
+            return money;
+        }
+        set
+        {
+            money = value;
+            moneyText.text = money.ToString();
+        }
+    }
 
     
     private void Start()
