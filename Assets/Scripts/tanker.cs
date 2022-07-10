@@ -5,43 +5,46 @@ using UnityEngine;
 public class tanker : MonoBehaviour
 {
     [SerializeField] private float baseHealth;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] protected float moveSpeed;
 
     [SerializeField] private float curHealth;
-    private float knockbackStart;
+    [SerializeField] private float GameOverCount;
+    [SerializeField] private bool IsBoss;
+    protected float knockbackStart;
 
-    private bool isFreeze;
-    private bool knockback;
+    protected bool isFreeze;
+    protected bool knockback;
     private bool skillknockback;
 
     Rigidbody2D rigid;
 
-    private void OnEnable()
+    
+
+    protected virtual void OnEnable()
     {
         curHealth = baseHealth;
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         curHealth = baseHealth;
         rigid = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         Move();
         CheckKnockback();
     }
 
-    private void Move()
+    protected virtual void Move()
     {
+        GameOverCount += Time.deltaTime;
         if (isFreeze)
             return;
-
-        Vector2 curPos = transform.position;
-        Vector2 nextPos = Vector2.left * moveSpeed * Time.deltaTime;
-
-        transform.position = curPos + nextPos;
+        if(GameOverCount >= 100)
+            moveSpeed += Time.deltaTime;
+        transform.position -= new Vector3(moveSpeed * Time.deltaTime, 0, 0);
     }
 
     public void Damage(float damage)
@@ -49,12 +52,12 @@ public class tanker : MonoBehaviour
         curHealth -= damage;
 
         //맞으면 넉백
-        if (curHealth > 0)
+        if (curHealth > 0 && !IsBoss)
         {
             Knockback();
         }
 
-        if (curHealth <= 0)  //체력이 0이하이면 사망
+        else if (curHealth <= 0)  //체력이 0이하이면 사망
         {
             ParticleManager.Instance.playDeathEffect(transform.position);
             Destroy(gameObject);
@@ -135,10 +138,16 @@ public class tanker : MonoBehaviour
         isFreeze = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     { 
-        if (collision.gameObject.CompareTag("EndLine"))
+        if (collision.gameObject.CompareTag("EndLine") && !IsBoss)
         {
+            InGameManager.Instance.EnemyPass(InGameManager.Instance.Hp);
+            Destroy(gameObject);
+        }
+        else if(collision.gameObject.CompareTag("EndLine") && IsBoss)
+        {
+            InGameManager.Instance.Hp = 0;
             InGameManager.Instance.EnemyPass(InGameManager.Instance.Hp);
             Destroy(gameObject);
         }

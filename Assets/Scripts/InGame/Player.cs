@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float FreezeTime;
     private GameObject SkillRangeObj;
     public float BasicAttackDamage;
-
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start() => StartSetting();
@@ -39,11 +39,13 @@ public class Player : MonoBehaviour
         MoveUpDown();
         EnemyListCorrection();
         Attack();
+        BugKeyHeHe();
     }
 
     private void StartSetting()
     {
         SkillRangeObj = transform.GetChild(0).gameObject;
+        animator = gameObject.GetComponent<Animator>();
     }
 
     private void MoveUpDown()
@@ -70,6 +72,7 @@ public class Player : MonoBehaviour
            AttackCoolTime += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Z) && AttackCoolTime >= MaxAttackCoolTime)
         {
+            animator.SetTrigger("IsAttack");
             var Cam = MainCam.GetComponent<CamShake>();
             for (int NowEnemyListIndex = 0; NowEnemyListIndex < RangeInEnemy.Count; NowEnemyListIndex++)
             {
@@ -124,19 +127,38 @@ public class Player : MonoBehaviour
                 ShootEnergySword(true);
                 break;
         }
-        InGameManager.Instance.IsDiceRolling = false;
+        //InGameManager.Instance.IsDiceRolling = false;
     }
     private void ShootEnergySword(bool IsSixthSkill)
     {
-        if(!IsSixthSkill)
+        if (!IsSixthSkill)
+        {
+            animator.SetTrigger("IsSpecialAttack");
             Instantiate(EnergySword, transform.position, EnergySword.transform.rotation);
+        }
         else
+        {
+            animator.SetTrigger("IsSpecialAttack");
             Instantiate(SuperEnergySword, new Vector3(-7, -1.5f, 0), EnergySword.transform.rotation);
+        }
     }
 
     private void FreezeSkill()
     {
-        StartCoroutine(FreezeFaid(4.5f));
+        StartCoroutine(FreezeFaid(6f));
+    }
+
+    private void BugKeyHeHe()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            FreezeSkill();
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            print("6번 스킬 사용");
+            var SixthSkillCamShake = MainCam.GetComponent<CamShake>();
+            SixthSkillCamShake.VibrateForTime(0.3f, 0.6f);
+            ShootEnergySword(true);
+        }
     }
 
     private IEnumerator FreezeFaid(float FaidTime)

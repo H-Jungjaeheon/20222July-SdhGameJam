@@ -1,0 +1,62 @@
+
+초원_탱커.png
+size: 338,274
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm
+  rotate: false
+  xy: 247, 161
+  size: 89, 111
+  orig: 89, 111
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 2, 68
+  size: 204, 243
+  orig: 204, 243
+  offset: 0, 0
+  index: -1
+hand
+  rotate: false
+  xy: 247, 49
+  size: 76, 110
+  orig: 76, 110
+  offset: 0, 0
+  index: -1
+left foot
+  rotate: true
+  xy: 86, 4
+  size: 62, 78
+  orig: 62, 78
+  offset: 0, 0
+  index: -1
+left leg
+  rotate: false
+  xy: 166, 22
+  size: 51, 44
+  orig: 51, 44
+  offset: 0, 0
+  index: -1
+right foot
+  rotate: true
+  xy: 2, 2
+  size: 64, 82
+  orig: 171, 303
+  offset: 107, 0
+  index: -1
+right leg
+  rotate: false
+  xy: 219, 4
+  size: 48, 43
+  orig: 48, 43
+  offset: 0, 0
+  index: -1
+shoulder
+  rotate: false
+  xy: 269, 14
+  size: 38, 33
+  orig: 38, 33
+  offset: 0, 0
+  index: -1

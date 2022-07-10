@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealth: 500
   moveSpeed: 2
+  curHealth: 0
+  GameOverCount: 0
   skillCooltime: 5
   spawnEnemyCount: 4
   spawnEnemyPrefab: {fileID: 5813567394226242934, guid: 98ce76541add8894bb3dfcb45845190f, type: 3}
@@ -137,7 +139,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -153,9 +155,9 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08328915, y: -0.028288722}
-  m_Size: {x: 1.6311893, y: 3.3790534}
+  m_Offset: {x: -0.022227287, y: -0.028288722}
+  m_Size: {x: 3.047823, y: 3.3790534}
   m_Direction: 0

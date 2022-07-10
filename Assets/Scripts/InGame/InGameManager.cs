@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InGameManager : MonoBehaviour
@@ -28,7 +29,9 @@ public class InGameManager : MonoBehaviour
     [Header("오브젝트 모음")]
     [Tooltip("플레이어 오브젝트")]
     [SerializeField] private GameObject player;
-
+    [SerializeField] private GameObject RandDice;
+    [SerializeField] private GameObject[] RandDiceObjs;
+ 
     [Header("스테이지 변수")]
     [SerializeField] private float MaxStageTime;
     [SerializeField] private float StageTime;
@@ -63,6 +66,7 @@ public class InGameManager : MonoBehaviour
         DiceCoolTimePlus();
         DiceRoll();
         StageTimer();
+        GameOver();
     }
 
     public void EnemyPass(int CurHp)
@@ -124,17 +128,22 @@ public class InGameManager : MonoBehaviour
     }
     private IEnumerator RollTheDice() 
     {
+        WaitForSeconds WaitTwoSec =  new WaitForSeconds(2);
         var PlayerComponent = player.GetComponent<Player>();
         RandDiceIndex = Random.Range(1, 101);
-        //주사위 애니메이션 실행
-        yield return new WaitForSeconds(3);
-        //주사위 애니메이션 멈춤
-        yield return new WaitForSeconds(1); 
+        RandDice.SetActive(true);
+        yield return WaitTwoSec;
+        RandDice.SetActive(false);
         for(int SkillIndex = 0; SkillIndex < 6; SkillIndex++)
         {
             if(RandDiceIndex > SkillPercentage[SkillIndex])
             {
                 PlayerComponent.RandSkill(SkillIndex + 1);
+                RandDiceObjs[SkillIndex].SetActive(true);
+                yield return new WaitForSeconds(3);
+                RandDiceObjs[SkillIndex].SetActive(false);
+                print(IsDiceRolling);
+                IsDiceRolling = false;
                 break;
             }
         }
@@ -142,6 +151,10 @@ public class InGameManager : MonoBehaviour
  
     private void GameOver()
     {
+        if(Hp <= 0)
+        {
+            SceneManager.LoadScene("Ending");
+        }
         GameManager.Instance.Gold += GetGold;
     }
     private void GameClear()

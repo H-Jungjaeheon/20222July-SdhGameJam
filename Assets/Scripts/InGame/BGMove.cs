@@ -16,8 +16,8 @@ public class BGMove : MonoBehaviour
         for(int BGObjIndex = 0; BGObjIndex < 2; BGObjIndex++)
         {
             BG[BGObjIndex].transform.position -= new Vector3(CloudMoveSpeed * Time.deltaTime, 0, 0);
-            if(BG[BGObjIndex].transform.position.x <= -17.6)
-                BG[BGObjIndex].transform.position = new Vector3(20, BG[BGObjIndex].transform.position.y, 0);
+            if(BG[BGObjIndex].transform.position.x <= -17.77f)
+                BG[BGObjIndex].transform.position = new Vector3(17.76f, BG[BGObjIndex].transform.position.y, 0);
         }
     }
 }
