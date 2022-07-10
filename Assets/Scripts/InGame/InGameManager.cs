@@ -127,9 +127,9 @@ public class InGameManager : MonoBehaviour
         var PlayerComponent = player.GetComponent<Player>();
         RandDiceIndex = Random.Range(1, 101);
         //주사위 애니메이션 실행
-        //yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(3);
         //주사위 애니메이션 멈춤
-        yield return new WaitForSeconds(0); //1 
+        yield return new WaitForSeconds(1); 
         for(int SkillIndex = 0; SkillIndex < 6; SkillIndex++)
         {
             if(RandDiceIndex > SkillPercentage[SkillIndex])
