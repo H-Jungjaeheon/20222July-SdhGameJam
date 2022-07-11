@@ -3,16 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpGradeBoard : MonoBehaviour
+public abstract class UpGradeBoard : MonoBehaviour
 {
     [SerializeField]
-    protected float[] needMoney;
+    protected double[] cost;
     [SerializeField]
-    protected string skillName;
+    protected Text skillName;
     [SerializeField]
-    protected Sprite skillImage;
+    protected Text levelTxt;
     [SerializeField]
     protected Button upGradeBtn;
     [SerializeField]
-    protected int level;
+    protected Image picture;
+
+    protected int skillLevel;
+    public Text SkillName => skillName;
+
+    public int SkillLevel
+    {
+        get
+        {
+            return skillLevel;
+        }
+        set
+        {
+            levelTxt.text = skillLevel.ToString();
+        }
+    }
+    public double Cost => cost[skillLevel];
+    public Image Picture => picture;
+    protected abstract void OnEnable();
 }

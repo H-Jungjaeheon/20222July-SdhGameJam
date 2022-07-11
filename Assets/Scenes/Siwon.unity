@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 42458657}
   - component: {fileID: 42458659}
   - component: {fileID: 42458658}
+  - component: {fileID: 42458660}
   m_Layer: 5
   m_Name: firstskillboard
   m_TagString: Untagged
@@ -161,7 +162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -180, y: 218}
+  m_AnchoredPosition: {x: -264, y: 218}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &42458658
@@ -202,6 +203,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42458656}
   m_CullTransparentMesh: 1
+--- !u!114 &42458660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42458656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a0b53dacb4c894db849a6fd7211df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost:
+  - 100
+  - 200
+  - 400
+  - 800
+  - 1600
+  - 3200
+  - 6400
+  - 12800
+  - 25600
+  - 51200
+  skillName: {fileID: 1609619630}
+  levelTxt: {fileID: 1066584911}
+  upGradeBtn: {fileID: 0}
+  picture: {fileID: 0}
 --- !u!1 &64852429
 GameObject:
   m_ObjectHideFlags: 0
@@ -2295,14 +2323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe3ad889017d8c4395e92c1fa40fe96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillLevelStat:
-    DamageLevel: 1
-    CloseWideRangeLevel: 1
-    HealLevel: 1
-    SpawnCreatureLevel: 1
-    AllLineAttackLevel: 1
-    CCSkillLevel: 1
-    AllMapAttackLevel: 1
   NowStageIndex: 0
   Gold: 0
 --- !u!4 &1879961300

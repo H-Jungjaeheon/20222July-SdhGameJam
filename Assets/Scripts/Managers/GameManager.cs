@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     private static GameManager instance = null;
 
     [Tooltip("스킬 레벨")]
-    public SkillLevel SkillLevelStat;
     [SerializeField] private int NowStageIndex;
     [Tooltip("재화")]
     public int Gold;
