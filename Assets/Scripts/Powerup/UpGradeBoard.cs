@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public abstract class UpGradeBoard : MonoBehaviour
 {
 
-    protected const int maxLevel = 10;
+    protected const int maxLevel = 9;
     #region 인스펙터에서 넣어준것들
     [SerializeField]
     protected double[] cost;
@@ -51,9 +51,9 @@ public abstract class UpGradeBoard : MonoBehaviour
         if(skillLevel >= maxLevel)
         {
             upGradeBtn.gameObject.SetActive(false);
-
+            maxtxt.gameObject.SetActive(true);
         }
-        levelTxt.text = skillLevel.ToString() + " Level";
+        levelTxt.text = (skillLevel + 1).ToString() + " Level";
         costtxt.text = Cost.ToString();
     }
     public double Cost => cost[skillLevel];

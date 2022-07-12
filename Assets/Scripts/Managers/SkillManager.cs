@@ -28,13 +28,13 @@ public class SkillManager : MonoBehaviour
             return instance;
         }
     }
-    private int baseAttack = 1;
-    private int firstSkillLevel = 1;
-    private int secondSkillLevel = 1;
-    private int thirdSkillLevel = 1;
-    private int fourthSkillLevel = 1;
-    private int fifthSkillLevel = 1;
-    private int sixthSkillLevel = 1;
+    private int baseAttackLevel;
+    private int firstSkillLevel;
+    private int secondSkillLevel;
+    private int thirdSkillLevel;
+    private int fourthSkillLevel;
+    private int fifthSkillLevel;
+    private int sixthSkillLevel;
 
     private float baseDmg = 10;
     private float firstDmg = 5;
@@ -138,15 +138,15 @@ public class SkillManager : MonoBehaviour
 
 
     #region 스킬 레벨 프로퍼티
-    public int BaseAttack
+    public int BaseAttackLevel
     {
         get
         {
-            return baseAttack;
+            return baseAttackLevel;
         }
         set
         {
-            baseAttack = value;
+            baseAttackLevel = value;
         }
     }
     public int FirstSkillLevel
