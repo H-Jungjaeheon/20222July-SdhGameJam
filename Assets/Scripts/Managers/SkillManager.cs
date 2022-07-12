@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
+    private SkillManager instance;
+    public SkillManager Instance
+    {
+        get
+        {
+            if(instance == null)
+            {
+                instance = GetComponent<SkillManager>();
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            return instance;
+        }
+    }
+    private int baseAttack = 1;
     private int firstSkillLevel = 1;
     private int secondSkillLevel = 1;
     private int thirdSkillLevel = 1;
@@ -11,17 +29,119 @@ public class SkillManager : MonoBehaviour
     private int fifthSkillLevel = 1;
     private int sixthSkillLevel = 1;
 
-    public float firstDmg;
-    public float secondShield;
-    public struct ThirdunitStat
-    {
-        public float hp;
-        public float dmg;
-    }
-    public float fourthDmg;
-    public float fifthIceTime;
-    public float sixthDmg;
+    private float baseDmg = 10;
+    private float firstDmg = 5;
+    private float secondShield;
+    private float unitHp = 10;
+    private float unitDmg = 10;
+    private float fourthDmg = 10;
+    private float fifthIceTime = 1;
+    private float sixthDmg = 100;
 
+    #region 스킬 스탯 프로퍼티
+    public float BaseDmg
+    {
+        get
+        {
+            return baseDmg;
+        }
+        set
+        {
+            baseDmg = value;
+        }
+    } 
+    public float FirstDmg
+    {
+        get
+        {
+            return firstDmg;
+        }
+        set
+        {
+            firstDmg = value;
+        }
+    }
+    public float SecondShield
+    {
+        get
+        {
+            return secondShield;
+        }
+        set
+        {
+            secondShield = value;
+        }
+    }
+    public float ThirdUnitHp
+    {
+        get
+        {
+            return unitHp;
+        }
+        set
+        {
+            unitHp = value;
+        }
+    }
+    public float ThirdUnitDmg
+    {
+        get
+        {
+            return unitDmg;
+        }
+        set
+        {
+            unitDmg = value;
+        }
+    }
+    public float FourthDmg
+    {
+        get
+        {
+            return fourthDmg;
+        }
+        set
+        {
+            fourthDmg = value;
+        }
+    }
+    public float FifthIceTime
+    {
+        get
+        {
+            return fifthIceTime;
+        }
+        set
+        {
+            fifthIceTime = value;
+        }
+    }
+    public float SixthDmg
+    {
+        get
+        {
+            return sixthDmg;
+        }
+        set
+        {
+            sixthDmg = value;
+        }
+    }
+    #endregion
+
+
+    #region 스킬 레벨 프로퍼티
+    public int BaseAttack
+    {
+        get
+        {
+            return baseAttack;
+        }
+        set
+        {
+            baseAttack = value;
+        }
+    }
     public int FirstSkillLevel
     {
         get => firstSkillLevel;
@@ -70,5 +190,5 @@ public class SkillManager : MonoBehaviour
             sixthSkillLevel = value;
         }
     }
-
+    #endregion
 }

@@ -13,12 +13,20 @@ public abstract class UpGradeBoard : MonoBehaviour
     protected Text levelTxt;
     [SerializeField]
     protected Button upGradeBtn;
-    [SerializeField]
+    
     protected Image picture;
+    [SerializeField]
+    protected Sprite sprite;
 
     protected int skillLevel;
     public Text SkillName => skillName;
 
+    protected virtual void Start()
+    {
+        picture = GetComponent<Image>();
+        picture.sprite = sprite;
+    }
+    
     public int SkillLevel
     {
         get
@@ -31,6 +39,5 @@ public abstract class UpGradeBoard : MonoBehaviour
         }
     }
     public double Cost => cost[skillLevel];
-    public Image Picture => picture;
     protected abstract void OnEnable();
 }
