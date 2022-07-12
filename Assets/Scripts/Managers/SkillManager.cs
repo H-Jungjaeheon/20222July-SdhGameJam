@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    private SkillManager instance;
-    public SkillManager Instance
+    private static SkillManager instance = null;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = GetComponent<SkillManager>();
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    public static SkillManager Instance
     {
         get
         {
             if(instance == null)
             {
-                instance = GetComponent<SkillManager>();
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
+                return null;
             }
             return instance;
         }

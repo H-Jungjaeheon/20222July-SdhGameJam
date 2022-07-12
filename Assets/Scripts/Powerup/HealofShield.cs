@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WideAttackUp : UpGradeBoard
+public class HealofShield : UpGradeBoard
 {
     protected override void Update()
     {
@@ -10,15 +10,15 @@ public class WideAttackUp : UpGradeBoard
     }
     protected override void Start()
     {
-        skillLevel = SkillManager.Instance.FirstSkillLevel;
+        skillLevel = SkillManager.Instance.SecondSkillLevel;
         base.Start();
         upGradeBtn.onClick.AddListener(() =>
         {
-            if(GameManager.Instance.Gold >= Cost)
+            if (GameManager.Instance.Gold >= Cost)
             {
                 skillLevel++;
                 GameManager.Instance.Gold -= Cost;
-                SkillManager.Instance.FirstSkillLevel = skillLevel;
+                SkillManager.Instance.SecondSkillLevel = skillLevel;
             }
         });
     }

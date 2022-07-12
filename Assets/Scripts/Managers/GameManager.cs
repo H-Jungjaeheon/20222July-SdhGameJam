@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("스킬 레벨")]
     [SerializeField] private int NowStageIndex;
     [Tooltip("재화")]
-    public int Gold;
+    public double Gold;
     
 
     private void Awake()
