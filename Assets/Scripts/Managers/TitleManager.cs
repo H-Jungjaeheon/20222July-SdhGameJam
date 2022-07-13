@@ -43,8 +43,18 @@ public class TitleManager : MonoBehaviour
         fade.gameObject.SetActive(false);
         SceneManager.LoadScene("Main");
     }
+    private void Start()
+    {
+        gameQuit.onClick.AddListener(() =>
+        {
+            Application.Quit();
+        });
+    }
     #endregion
+#if UNITY_EDITOR
     
+#endif
+
 
 
 }
