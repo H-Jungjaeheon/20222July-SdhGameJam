@@ -9,6 +9,8 @@ public class MainMenuManager : MonoBehaviour
     public Button powerupboardBtn;
     public Button gotitle;
 
+    public Button powerupfalsebtn;
+
     public Text goldtxt;
 
     public GameObject powerUpBoard;
@@ -27,6 +29,11 @@ public class MainMenuManager : MonoBehaviour
         {
             Debug.Log("파워업 가라고 개새");
             powerUpBoard.SetActive(true);
+        });
+        powerupfalsebtn.onClick.AddListener(() =>
+        {
+            Debug.Log("파워업 창을 닫았습니다");
+            powerUpBoard.SetActive(false);
         });
     }
     private void Update()
