@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using UnityEditor;
 
 public class TitleManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class TitleManager : MonoBehaviour
 
 
     private bool isStart;
-    
+
     private void Update()
     {
         if (Input.anyKey && isStart == false)
@@ -47,13 +48,20 @@ public class TitleManager : MonoBehaviour
     {
         gameQuit.onClick.AddListener(() =>
         {
-            Application.Quit();
+            QuitGame();
         });
     }
+
     #endregion
-#if UNITY_EDITOR
-    
-#endif
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else 
+        Application.Quit();
+        #endif
+    }
+
 
 
 
