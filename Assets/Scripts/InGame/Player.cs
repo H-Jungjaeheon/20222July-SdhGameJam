@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
                     var Cam = MainCam.GetComponent<CamShake>();
                     Cam.VibrateForTime(0.2f, 0.3f);
                 }
-                RangeInEnemy[NowEnemyListIndex].GetComponent<tanker>().Damage(BasicAttackDamage);
+                RangeInEnemy[NowEnemyListIndex].GetComponent<BasicEnemy>().Damage(BasicAttackDamage, false);
             }
         }
         IsAttackDelay = false;
@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
                     if (FirstSkill.FirstSkillRangeInEnemy[NowEnemyListIndex] != null)
                     {
                         FirstSkillCamShake.VibrateForTime(0.2f, 0.5f);
-                        FirstSkill.FirstSkillRangeInEnemy[NowEnemyListIndex].GetComponent<tanker>().Damage(BasicAttackDamage * 2);
+                        FirstSkill.FirstSkillRangeInEnemy[NowEnemyListIndex].GetComponent<BasicEnemy>().Damage(BasicAttackDamage * 2, true);
                     }
                 }
                 break;
@@ -197,7 +197,7 @@ public class Player : MonoBehaviour
         FreezeSkillTargetEnemys = GameObject.FindGameObjectsWithTag("Enemy");
         for(int TargetEnemyIndex = 0; TargetEnemyIndex < FreezeSkillTargetEnemys.Length; TargetEnemyIndex++)
         {
-            FreezeSkillTargetEnemys[TargetEnemyIndex].GetComponent<tanker>().freeze(FreezeTime);
+            FreezeSkillTargetEnemys[TargetEnemyIndex].GetComponent<BasicEnemy>().freeze(FreezeTime);
         }
     }
 

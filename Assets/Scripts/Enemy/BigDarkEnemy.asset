@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3157973a1a884f4eb9e9f094f74f18b, type: 3}
-  m_Name: LavaEnemy
+  m_Name: BigDarkEnemy
   m_EditorClassIdentifier: 
-  hp: 2
-  speed: 2
-  giveMoney: 50
+  hp: 20
+  speed: 0.5
+  giveMoney: 150

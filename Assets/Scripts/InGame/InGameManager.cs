@@ -41,7 +41,7 @@ public class InGameManager : MonoBehaviour
 
 
     [Header("ÀçÈ­")]
-    public int GetGold;
+    public float GetGold;
 
     [Header("½ºÅÈ")]
     public int Hp;
@@ -49,16 +49,10 @@ public class InGameManager : MonoBehaviour
     [HideInInspector]
     public bool IsDiceRolling;
 
-
+    [SerializeField] private GameObject Boss;
+    [SerializeField] private Text goldText;
 
     private void Awake() => StartSetting();
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -67,6 +61,7 @@ public class InGameManager : MonoBehaviour
         DiceRoll();
         StageTimer();
         GameOver();
+        GoldText();
     }
 
     public void EnemyPass(int CurHp)
@@ -80,7 +75,7 @@ public class InGameManager : MonoBehaviour
         if(Hp > 0)
            Hp -= 1;
     }
-
+    void GoldText() => goldText.text = $"{GetGold} ¿ø";
     public void Heal(int CurHp)
     {
         switch (CurHp)
@@ -116,6 +111,10 @@ public class InGameManager : MonoBehaviour
     private void StageTimer()
     {
         StageTime += Time.deltaTime;
+        if(StageTime >= 200 || Input.GetKeyDown(KeyCode.Escape))
+        {
+            Boss.SetActive(true);
+        }
     }
     private void DiceRoll()
     {
@@ -153,7 +152,7 @@ public class InGameManager : MonoBehaviour
     {
         if(Hp <= 0)
         {
-            SceneManager.LoadScene("Ending");
+            SceneManager.LoadScene("Main");
         }
         GameManager.Instance.Gold += GetGold;
     }

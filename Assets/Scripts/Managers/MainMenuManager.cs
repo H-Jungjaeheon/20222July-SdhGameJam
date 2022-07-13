@@ -19,7 +19,7 @@ public class MainMenuManager : MonoBehaviour
     {
         gamestart.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("InGame");
+            SceneManager.LoadScene("Jaeheon");
         });
         gotitle.onClick.AddListener(() =>
         {

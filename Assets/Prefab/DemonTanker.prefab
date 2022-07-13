@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6210148946809829422}
   - component: {fileID: 6210148946809829423}
   - component: {fileID: 6210148946809829420}
-  - component: {fileID: 6210148946809829457}
   - component: {fileID: 6210148946809829421}
   - component: {fileID: 6210148946809829417}
+  - component: {fileID: 4173796923698601567}
   m_Layer: 7
   m_Name: DemonTanker
   m_TagString: Enemy
@@ -102,22 +102,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.009827316, y: -0.04913807}
   m_Size: {x: 3.8500354, y: 4.616597}
   m_Direction: 0
---- !u!114 &6210148946809829457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6210148946809829418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c5c48192c6ca74caf73d98f90c7713, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseHealth: 50
-  moveSpeed: 1
-  curHealth: 0
-  GameOverCount: 0
 --- !u!50 &6210148946809829421
 Rigidbody2D:
   serializedVersion: 4
@@ -158,3 +142,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4173796923698601567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210148946809829418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721f766784eaa964f9e92233419e8427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyStat: {fileID: 11400000, guid: 5d7718dd47c4e4d4c99dadc606ae1560, type: 2}
+  hp: 0
+  speed: 0
+  giveMoney: 0
+  isBoss: 0
+  isFreeze: 0
+  rigid: {fileID: 6210148946809829421}

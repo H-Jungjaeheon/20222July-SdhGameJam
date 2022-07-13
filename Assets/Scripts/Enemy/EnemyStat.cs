@@ -11,4 +11,7 @@ public class EnemyStat : ScriptableObject
 
     [SerializeField] private float speed;
     public float Speed => speed;
+
+    [SerializeField] private float giveMoney;
+    public float GiveMoney => giveMoney;
 }

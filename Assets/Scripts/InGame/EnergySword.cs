@@ -13,7 +13,7 @@ public class EnergySword : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
-            collision.gameObject.GetComponent<tanker>().Damage(Player.GetComponent<Player>().BasicAttackDamage * Damage); //이거 다 적 상속으로 바꿔서 넣기
+            collision.gameObject.GetComponent<BasicEnemy>().Damage(Player.GetComponent<Player>().BasicAttackDamage * Damage, false); //이거 다 적 상속으로 바꿔서 넣기
         else if (collision.gameObject.CompareTag("ObjDestroy"))
             Destroy(gameObject);
     }

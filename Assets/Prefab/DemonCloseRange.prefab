@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5953175178873275737}
   - component: {fileID: 5953175178873275736}
   - component: {fileID: 5953175178873275739}
-  - component: {fileID: 5953175178873275686}
   - component: {fileID: 5953175178873275738}
   - component: {fileID: 5953175178873275742}
+  - component: {fileID: 7158296699262118083}
   m_Layer: 7
   m_Name: DemonCloseRange
   m_TagString: Enemy
@@ -102,22 +102,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.036259208, y: -0.08702159}
   m_Size: {x: 2.783943, y: 3.5083754}
   m_Direction: 0
---- !u!114 &5953175178873275686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5953175178873275741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c5c48192c6ca74caf73d98f90c7713, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseHealth: 25
-  moveSpeed: 1.5
-  curHealth: 0
-  GameOverCount: 0
 --- !u!50 &5953175178873275738
 Rigidbody2D:
   serializedVersion: 4
@@ -158,3 +142,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7158296699262118083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953175178873275741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721f766784eaa964f9e92233419e8427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyStat: {fileID: 11400000, guid: 548269fd6b4fce04f943bc8745a29e81, type: 2}
+  hp: 0
+  speed: 0
+  giveMoney: 0
+  isBoss: 0
+  isFreeze: 0
+  rigid: {fileID: 5953175178873275738}
