@@ -25,12 +25,14 @@ public class Player : MonoBehaviour
     [SerializeField] private Image FifthSkillFaidImage;
     [Tooltip("프리즈 스킬 적 판별")]
     [SerializeField] private GameObject[] FreezeSkillTargetEnemys;
+
+    [SerializeField] private bool IsAttackDelay;
+
     [SerializeField] private float FreezeTime;
     private GameObject SkillRangeObj;
     public float BasicAttackDamage;
     private Animator animator;
 
-    // Start is called before the first frame update
     void Start() => StartSetting();
 
     // Update is called once per frame
@@ -53,13 +55,13 @@ public class Player : MonoBehaviour
         MoveCoolTimeCount += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.DownArrow) && IsUp && MoveCoolTimeCount >= MaxMoveCoolTimeCount)
         {
-            transform.position = new Vector3(-7.05f, -3.66f, 0);
+            transform.position = new Vector3(-6.6f, -2.15f, 0);
             MoveCoolTimeCount = 0;
             IsUp = false;
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow) && !IsUp && MoveCoolTimeCount >= MaxMoveCoolTimeCount)
         {
-            transform.position = new Vector3(-7.05f, 0.5f, 0);
+            transform.position = new Vector3(-6.6f, 2.05f, 0);
             MoveCoolTimeCount = 0;
             IsUp = true;
         }
@@ -68,22 +70,32 @@ public class Player : MonoBehaviour
     }
     public void Attack()
     {
-        if(AttackCoolTime < MaxAttackCoolTime)
+        if(AttackCoolTime < MaxAttackCoolTime && !IsAttackDelay)
            AttackCoolTime += Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Z) && AttackCoolTime >= MaxAttackCoolTime)
+        if (Input.GetKeyDown(KeyCode.Z) && AttackCoolTime >= MaxAttackCoolTime && !IsAttackDelay)
         {
-            animator.SetTrigger("IsAttack");
-            var Cam = MainCam.GetComponent<CamShake>();
-            for (int NowEnemyListIndex = 0; NowEnemyListIndex < RangeInEnemy.Count; NowEnemyListIndex++)
-            {
-                if (RangeInEnemy[NowEnemyListIndex] != null)
-                {
-                    Cam.VibrateForTime(0.2f, 0.3f);
-                    RangeInEnemy[NowEnemyListIndex].GetComponent<tanker>().Damage(BasicAttackDamage);
-                }
-            }
             AttackCoolTime = 0;
+            animator.SetTrigger("IsAttack");
+            StartCoroutine(AttackDelay());
         }
+    }
+    IEnumerator AttackDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        for (int NowEnemyListIndex = 0; NowEnemyListIndex < RangeInEnemy.Count; NowEnemyListIndex++)
+        {
+            if (RangeInEnemy[NowEnemyListIndex] != null)
+            {
+                if (!IsAttackDelay)
+                {
+                    IsAttackDelay = true;
+                    var Cam = MainCam.GetComponent<CamShake>();
+                    Cam.VibrateForTime(0.2f, 0.3f);
+                }
+                RangeInEnemy[NowEnemyListIndex].GetComponent<tanker>().Damage(BasicAttackDamage);
+            }
+        }
+        IsAttackDelay = false;
     }
     public void RandSkill(int SkillIndex)
     {

@@ -796,7 +796,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.6973531, y: 0.25562572}
+  m_Offset: {x: 2.6777465, y: -2.3014398}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -807,7 +807,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.557014, y: 8.093609}
+  m_Size: {x: 7.7575917, y: 8.868478}
   m_EdgeRadius: 0
 --- !u!114 &428947432
 MonoBehaviour:
@@ -1613,12 +1613,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 32adbc15a32fe9a49b352eb398fee187, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e661c2f43b2ca614a900c8853acf22c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 11.12, y: 14.07}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1632,7 +1632,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013512333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.8, y: 1, z: 0}
+  m_LocalPosition: {x: -6.6, y: 2.05, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 428947429}
@@ -1661,6 +1661,7 @@ MonoBehaviour:
   SuperEnergySword: {fileID: 5358832449201135250, guid: 2eb724fd48eb6d044a6437cf95c0cb63, type: 3}
   FifthSkillFaidImage: {fileID: 1238778082}
   FreezeSkillTargetEnemys: []
+  IsAttackDelay: 0
   FreezeTime: 2
   BasicAttackDamage: 20
 --- !u!50 &1013512337
@@ -1697,18 +1698,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.70859325, y: 0.31953263}
+  m_Offset: {x: 1.1993432, y: -2.263362}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.67, y: 9.39}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 11.12, y: 14.07}
+    newSize: {x: 11.12, y: 14.07}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4600108, y: 7.8379846}
+  m_Size: {x: 4.8879333, y: 8.871144}
   m_EdgeRadius: 0
 --- !u!95 &1013512339
 Animator:
